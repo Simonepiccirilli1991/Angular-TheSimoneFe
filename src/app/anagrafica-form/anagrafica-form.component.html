@@ -1,0 +1,48 @@
+<div class="card my-5">
+    <div class="card-body">
+  <form class="row g-3" (ngSubmit)="salvaAnagrafica()" #anagraficaForm="ngForm">
+    <div class="col-md-6">
+      <label for="nome" class="form-label">Inserisci nome</label>
+      <input type="text" [(ngModel)]="anagrafica.nome" class="form-control" id="nome" name="nome">
+    </div>
+    <div class="col-md-6">
+      <label for="cognome" class="form-label">cognome</label>
+      <input type="text" [(ngModel)]="anagrafica.cognome" class="form-control" id="cognome"  name="cognome">
+    </div>
+    <div class="col-md-6">
+        <label for="comune" class="form-label">comune</label>
+        <input type="text" [(ngModel)]="anagrafica.comune" class="form-control" id="comune" name="comune">
+      </div>
+    <div class="col-md-6">
+        <label for="datanascita" class="form-label">Data nascita</label>
+        <input type="text" [(ngModel)]="anagrafica.dataNascita" class="form-control" id="dataNascita" name="dataNascita">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Invia</button>
+      </div>
+  </form>
+  </div>
+  </div>
+
+  <div *ngIf="loading">loading...</div>
+
+<div class="row"> 
+  <div class="col-sm-6, col-md-6">
+    <div class="alert alert-danger" *ngIf="respon">
+      <p>{{ respon }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="row"> 
+  <div class="col-sm-6, col-md-6">
+    <div class="alert alert-danger" *ngIf="step3">
+      <a routerLink="/accedi"  class="btn btn-info">cliccare per procedere con l'accesso</a>
+      <button ng-click="gotoStep2()" ></button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-warning">
+  <strong>Warning!</strong> {{errorMessage | json}}
+</div>

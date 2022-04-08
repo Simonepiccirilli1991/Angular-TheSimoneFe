@@ -1,0 +1,47 @@
+<div class="card my-5">
+    <div class="card-body">
+  <form class="row g-3" (ngSubmit)="salvaUtente()" #utenteForm="ngForm">
+    <div class="col-md-6">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" [(ngModel)]="utente.username" class="form-control" id="username" name="username">
+    </div>
+    <div class="col-md-6">
+      <label for="psw" class="form-label">Inserisci psw</label>
+      <input type="password" [(ngModel)]="utente.psw" class="form-control" id="psw"  name="psw">
+    </div>
+    <div class="col-md-6">
+        <label for="email" class="form-label">email</label>
+        <input type="email" [(ngModel)]="utente.email" class="form-control" id="email" name="email">
+      </div>
+      <div class="col-md-6">
+        <label for="psw2" class="form-label">conferma psw</label>
+        <input type="password"  [(ngModel)]="utente.confermapsw" class="form-control" id="pswconferma"  name="pswconferma">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Invia</button>
+      </div>
+  </form>
+  </div>
+  </div>
+
+<div *ngIf="loading">loading...</div>
+
+<div class="row"> 
+  <div class="col-sm-6, col-md-6">
+    <div class="alert alert-danger" *ngIf="response.respon">
+      <p>{{ response.respon }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="row"> 
+  <div class="col-sm-6, col-md-6">
+    <div class="alert alert-danger" *ngIf="step2">
+      <a routerLink="/step2/" [queryParams]="{username: response.username } " class="btn btn-info">cliccare per procedere con lo step successivo</a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-warning">
+  <strong>Warning!</strong> {{errorMessage | json}}
+</div>

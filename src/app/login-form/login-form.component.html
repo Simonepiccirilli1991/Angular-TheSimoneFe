@@ -1,0 +1,38 @@
+<div class="card my-5">
+    <div class="card-body">
+  <form class="row g-3" (ngSubmit)="loginUtente()" #utenteForm="ngForm">
+    <div class="col-md-6">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" [(ngModel)]="utente.username" class="form-control" id="username" name="username">
+    </div>
+    <div class="col-md-6">
+      <label for="psw" class="form-label">Inserisci psw</label>
+      <input type="password" [(ngModel)]="utente.psw" class="form-control" id="psw"  name="psw">
+    </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Invia</button>
+      </div>
+  </form>
+  </div>
+  </div>
+
+  <div class="row"> 
+    <div class="col-sm-6, col-md-6">
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        <p>{{ errorMessage }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row"> 
+    <div class="col-sm-6, col-md-6">
+      <div class="alert alert-danger" *ngIf="accesso">
+      <p>{{ responseS }}</p>
+        <a routerLink="/visualizza/" [queryParams]="{username: utente.username } " class="btn btn-info">cliccare per procedere con lo step successivo</a>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="errorMessage" class="alert alert-warning">
+    <strong>Warning!</strong> {{errorMessage | json}}
+  </div>

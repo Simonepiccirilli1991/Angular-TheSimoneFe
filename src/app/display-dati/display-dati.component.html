@@ -1,0 +1,46 @@
+<p *ngIf="username" >Benvenuto {{ username }}</p>
+
+<div class="row"> 
+    <div class="col-sm-6, col-md-6" *ngIf="username">
+        <p>Accesso eseguito con successo su The-Simone-Corp, scegli cosa desideri fare ora:
+        </p>
+        <a (click)="ngClick()"  class="btn btn-info">cliccare per visualizzare i tuoi dati personali</a>
+        <a routerLink="/operazioni"  class="btn btn-info">cliccare per effettuare un operazione</a>
+        <a routerLink="/enforce"  class="btn btn-info">cliccare per Sblocco account 100% - Enforce</a>
+    </div>
+</div>
+
+    <div class="card my-5" *ngIf="vedi">
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Cognome</th>
+                <th scope="col">Comune</th>
+                <th scope="col">Data di nascita</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr >
+                <td>Info</td>
+                <td>{{ visualizzare.username }}</td>
+                <td>{{ visualizzare.email }}</td>
+                <td>{{ visualizzare.psw }}</td>
+                <td>{{ visualizzare.anagrafica.nome }}</td>
+                <td>{{ visualizzare.anagrafica.cognome }}</td>
+                <td>{{ visualizzare.anagrafica.comune }}</td>
+                <td>{{ visualizzare.anagrafica.dataNascita }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+ 
+      <div *ngIf="errorMsg" class="alert alert-warning">
+        <strong>Warning!</strong> {{errorMsg | json}}
+      </div>

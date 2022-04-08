@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { utenteResponse } from './model/utenteResponse';
 
 @Component({
   selector: 'app-root',
